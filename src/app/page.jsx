@@ -20,12 +20,19 @@ export default async function Page() {
             <i>Position: {formatToDollars(positionValue)}</i>
           </p>
           <p style={{ marginBottom: "1.5rem", fontSize: "18px" }}>
-            <i>Fee: {formatToDollars(unclaimedFee)}</i>
+            <i>Unclaimed fee: {formatToDollars(unclaimedFee)}</i>
           </p>
         </div>
       ))}
-      <h2>Unclaimed Fees: {formatToDollars(unclaimedFees)}</h2>
-      <h2>Value: {formatToDollars(netIdleValue + netLpValue + unclaimedFees)}</h2>
+      <p>
+        <i>
+          Net LP & unclaimed fees: {formatToDollars(netLpValue)} + {formatToDollars(unclaimedFees)}
+        </i>
+      </p>
+      <p>
+        <i>Net idle value: {formatToDollars(netIdleValue)}</i>
+      </p>
+      <h2>Total: {formatToDollars(netIdleValue + netLpValue + unclaimedFees)}</h2>
     </div>
   );
 }
