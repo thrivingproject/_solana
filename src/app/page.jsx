@@ -1,3 +1,4 @@
+import Link from "next/link.js";
 import { getLiq } from "../getLiq.js";
 import { formatToDollars } from "../util/formatToDollars.js";
 
@@ -8,13 +9,25 @@ export default async function Page() {
 
   return (
     <div>
-      {LpPositions.map(({ mintA, mintB, unclaimedFee, positionValue }, indx) => (
+      <h1>
+        <Link
+          className="external-link"
+          target="_blank"
+          href={process.env.SOLSCAN_URL + process.env.SOL_WALLET_ADDRESS}>
+          {process.env.SOL_WALLET_ADDRESS}
+        </Link>
+      </h1>
+      {LpPositions.map(({ mintA, mintB, unclaimedFee, positionValue, ipfs }, indx) => (
         <div key={indx}>
-          <h1>
-            {mintA.symbol} / {mintB.symbol}
-          </h1>
+          <h2>
+            <Link href={ipfs} target="_blank" className="external-link">
+              {mintA.symbol} / {mintB.symbol}
+            </Link>
+          </h2>
           <p>
-            {mintA.percent}% - {mintB.percent}%
+            <b>
+              {mintA.percent}% - {mintB.percent}%
+            </b>
           </p>
           <p>
             <i>Position: {formatToDollars(positionValue)}</i>
@@ -25,12 +38,12 @@ export default async function Page() {
         </div>
       ))}
       <p>
+        <i>Net idle value: {formatToDollars(netIdleValue)}</i>
+      </p>
+      <p>
         <i>
           Net LP & unclaimed fees: {formatToDollars(netLpValue)} + {formatToDollars(unclaimedFees)}
         </i>
-      </p>
-      <p>
-        <i>Net idle value: {formatToDollars(netIdleValue)}</i>
       </p>
       <h2>Total: {formatToDollars(netIdleValue + netLpValue + unclaimedFees)}</h2>
     </div>

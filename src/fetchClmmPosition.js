@@ -11,6 +11,7 @@ export async function fetchClmmPosition(positionID) {
 
   // return data;
   return {
+    ipfs: url,
     mintA: {
       symbol: data.poolInfo.mintA.symbol.toUpperCase(),
       address: data.poolInfo.mintA.address,

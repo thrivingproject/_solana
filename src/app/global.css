@@ -10,3 +10,36 @@ p {
   font-size: 24px;
   line-height: 1.4;
 }
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+.external-link {
+  position: relative;
+  display: inline-block;
+  padding-right: 1em;
+}
+
+.external-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 0.75em;
+  height: 0.75em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 3h3v3'/%3E%3Cpath d='M13 11l7-7'/%3E%3Cpath d='M21 21H3V3h9'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
