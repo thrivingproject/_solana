@@ -1,4 +1,4 @@
-# Solana LP, Token balances, value based on market price
+# Solana LP Positions, Token balances, values based on market price
 
 ## LP
 
