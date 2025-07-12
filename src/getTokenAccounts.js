@@ -11,7 +11,7 @@ dotenv.config({ quiet: true });
  */
 export async function getTokenAccounts() {
   const connection = new Connection(env.SOLANA_RPC_ENDPOINT, "confirmed");
-  const owner = new PublicKey(env.SOL_XPP_PUBLIC_WALLET_ADDRESS);
+  const owner = new PublicKey(env.SOL_WALLET_ADDRESS);
   const { value } = await connection.getParsedTokenAccountsByOwner(owner, {
     programId: new PublicKey(env.TOKEN_2022_PROGRAM_ID),
   });
