@@ -1,8 +1,5 @@
 import { env } from "process";
 import { Connection, PublicKey } from "@solana/web3.js";
-import dotenv from "dotenv";
-
-dotenv.config({ quiet: true });
 
 /**
  * Fetches token accounts
