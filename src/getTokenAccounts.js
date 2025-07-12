@@ -1,4 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
+import { SOL_WALLET_ADDRESS, SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config";
 
 /**
  * Fetches token accounts
@@ -6,10 +7,10 @@ import { Connection, PublicKey } from "@solana/web3.js";
  * @returns {Promise<{ lpTokenAccounts: Array<{pubKey: PublicKey, account: AccountInfo<ParsedAccountData>}>, nonLpTokenAccounts: Array<{pubKey: PublicKey, account: AccountInfo<ParsedAccountData>}>, solBalance: number }>} two arrays, one for LP token accounts and one for non-LP token accounts.
  */
 export async function getTokenAccounts() {
-  const connection = new Connection(process.env.SOLANA_RPC_ENDPOINT, "confirmed");
-  const owner = new PublicKey(process.env.SOL_WALLET_ADDRESS);
+  const connection = new Connection(SOLANA_RPC_ENDPOINT, "confirmed");
+  const owner = new PublicKey(SOL_WALLET_ADDRESS);
   const { value } = await connection.getParsedTokenAccountsByOwner(owner, {
-    programId: new PublicKey(process.env.TOKEN_2022_PROGRAM_ID),
+    programId: new PublicKey(TOKEN_2022_PROGRAM_ID),
   });
 
   // Separate LP and non-LP token accounts

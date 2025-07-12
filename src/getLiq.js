@@ -2,6 +2,7 @@ import { getTokenAccounts } from "./getTokenAccounts.js";
 import { fetchClmmPosition } from "./fetchClmmPosition.js";
 import { getPositionId } from "./getPositionId.js";
 import { getLlamaPrices } from "./getLlamaPrices.js";
+import { SOLANA_TOKEN_ADDRESS } from "./config.js";
 
 export async function getLiq() {
   const { lpTokenAccounts, nonLpTokenAccounts, solBalance } = await getTokenAccounts();
@@ -16,7 +17,7 @@ export async function getLiq() {
   ]);
   const priceMap = await getLlamaPrices([...uniqueTokenAddresses]);
 
-  let netIdleValue = solBalance * priceMap.get(process.env.SOLANA_TOKEN_ADDRESS).price;
+  let netIdleValue = solBalance * priceMap.get(SOLANA_TOKEN_ADDRESS).price;
   let netLpValue = 0;
   let unclaimedFees = 0;
 

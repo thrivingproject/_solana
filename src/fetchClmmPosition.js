@@ -1,10 +1,12 @@
+import { RAYDIUM_IPFS_GATEWAY } from "./config";
+
 /**
  *
  * @param {String} positionID - The ID of the CLMM position to fetch.
  * @returns
  */
 export async function fetchClmmPosition(positionID) {
-  const url = process.env.RAYDIUM_IPFS_GATEWAY + positionID;
+  const url = RAYDIUM_IPFS_GATEWAY + positionID;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
