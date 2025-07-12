@@ -1,11 +1,13 @@
-# Balances
+# Solana LP, Token balances, value based on market price
 
-## Solana Tokens (non-LP)
+## LP
 
-- hard code public wallet address
-- fetch balance of each token from wallet address
-- fetch price of each token
-- fetch name of each token
-- calculate value of each token based on balance and price
-- write name/balance/price/value of each token to file
-- return sum of all token values
+Get's LP tokens from wallet, queries Raydium for position ID, and then fetches position info from raydium IPFS.
+
+## Non-LP
+
+Get's balance of tokens from wallet
+
+## Values
+
+Fetches prices from DeFi Llama, displays LP position token value percentages for CLMM pools and unclaimed fees, values for all positions.
