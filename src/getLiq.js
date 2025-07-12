@@ -27,7 +27,7 @@ export async function getLiq() {
     netIdleValue += info.tokenAmount.uiAmount * priceMap.get(info.mint).price;
   });
 
-  // Add value of LP tokens
+  // Add value of LP tokens and update mintA and mintB with USD value and percent
   LpPositions.forEach(({ mintA, mintB, positionValue, unclaimedFee }) => {
     unclaimedFees += unclaimedFee;
     netLpValue += positionValue;
