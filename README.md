@@ -1,13 +1,17 @@
-# Solana LP Positions, Token balances, values based on market price
+# Solana Position Dashboard
 
-## LP
+## Wallet accounts
 
-Get's LP tokens from wallet, queries Raydium for position ID, and then fetches position info from raydium IPFS.
+Fetches all wallet token accounts and classifies them as LP tokens and non-LP tokens.
 
-## Non-LP
+## Raydium CLMM LP
 
-Get's balance of tokens from wallet
+For each LP token:
 
-## Values
+- fetches Raydium LP position id and provides link to IPFS gateway
+- for each asset in LP position, displays asset's value as a percentage of net value of entire LP position
+- shows unclaimed fees
 
-Fetches prices from DeFi Llama, displays LP position token value percentages for CLMM pools and unclaimed fees, values for all positions.
+## Wallet Net Value
+
+Fetches prices from DeFi Llama and displays net LP positions value, net unclaimed fees, and net idle tokens value.
