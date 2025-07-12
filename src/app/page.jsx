@@ -1,6 +1,8 @@
 import { getLiq } from "../getLiq.js";
 import { formatToDollars } from "../util/formatToDollars.js";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const { LpPositions, unclaimedFees, netLpValue, netIdleValue } = await getLiq();
 
