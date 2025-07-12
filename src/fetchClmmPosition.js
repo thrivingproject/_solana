@@ -1,4 +1,4 @@
-import { RAYDIUM_IPFS_GATEWAY } from "./config";
+import { RAYDIUM_IPFS_GATEWAY } from "./config.js";
 
 /**
  *

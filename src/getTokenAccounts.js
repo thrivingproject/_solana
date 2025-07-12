@@ -1,5 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import { SOL_WALLET_ADDRESS, SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config";
+import { SOL_WALLET_ADDRESS, SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config.js";
 
 /**
  * Fetches token accounts

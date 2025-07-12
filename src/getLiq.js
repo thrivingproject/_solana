@@ -14,6 +14,7 @@ export async function getLiq() {
   const uniqueTokenAddresses = new Set([
     ...LpPositions.flatMap(position => [position.mintA.address, position.mintB.address]),
     ...nonLpTokenAccounts.map(({ account }) => account.data.parsed.info.mint),
+    SOLANA_TOKEN_ADDRESS,
   ]);
   const priceMap = await getLlamaPrices([...uniqueTokenAddresses]);
 
