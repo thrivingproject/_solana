@@ -1,5 +1,7 @@
 # Solana Position Dashboard
 
+This app allows you monitor your Raydium LP positions without connecting a wallet or using a private key so that LP tokens can be moved to cold storage. This allows you to see if your position is still in range and your unclaimed fees while keeping your wallet cold. Also shows the net value of all of the LP positions and idle tokens in the wallet.
+
 ## Wallet accounts
 
 Fetches all wallet token accounts and classifies them as LP tokens and non-LP tokens.
