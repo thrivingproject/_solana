@@ -1,5 +1,6 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import { SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config.js";
+import { SOLANA_RPC_ENDPOINT } from "./config.js";
+import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from "@solana/spl-token";
 
 /**
  * Fetches token accounts
@@ -9,16 +10,26 @@ import { SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config.js";
 export async function getTokenAccounts() {
   const connection = new Connection(SOLANA_RPC_ENDPOINT, "confirmed");
   const owner = new PublicKey(process.env.SOL_WALLET_ADDRESS);
-  const { value } = await connection.getParsedTokenAccountsByOwner(owner, {
-    programId: new PublicKey(TOKEN_2022_PROGRAM_ID),
-  });
+
+  // Fetch accounts from both programs
+  const [tokenAccounts, token2022Accounts] = await Promise.all([
+    connection.getParsedTokenAccountsByOwner(owner, {
+      programId: new PublicKey(TOKEN_PROGRAM_ID),
+    }),
+    connection.getParsedTokenAccountsByOwner(owner, {
+      programId: new PublicKey(TOKEN_2022_PROGRAM_ID),
+    }),
+  ]);
+
+  // Combine both sets of accounts
+  const allAccounts = [...tokenAccounts.value, ...token2022Accounts.value];
 
   // Separate LP and non-LP token accounts
   const lpTokenAccounts = [];
   const nonLpTokenAccounts = [];
 
   // Separate LP and non-LP token accounts
-  value.forEach(acct => {
+  allAccounts.forEach(acct => {
     const decimals = acct.account.data.parsed.info.tokenAmount.decimals;
     if (decimals === 0) {
       lpTokenAccounts.push(acct);
