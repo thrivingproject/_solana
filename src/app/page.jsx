@@ -1,7 +1,7 @@
 import Link from "next/link.js";
 import { getLiq } from "../getLiq.js";
 import { formatToDollars } from "../util/formatToDollars.js";
-import { SOL_WALLET_ADDRESS, SOLSCAN_URL } from "../config.js";
+import { SOLSCAN_URL } from "../config.js";
 
 export const dynamic = "force-dynamic";
 
@@ -11,8 +11,11 @@ export default async function Page() {
   return (
     <div>
       <h1>
-        <Link className="external-link" target="_blank" href={SOLSCAN_URL + SOL_WALLET_ADDRESS}>
-          {SOL_WALLET_ADDRESS}
+        <Link
+          className="external-link"
+          target="_blank"
+          href={SOLSCAN_URL + process.env.SOL_WALLET_ADDRESS}>
+          {process.env.SOL_WALLET_ADDRESS}
         </Link>
       </h1>
       {LpPositions.map(({ mintA, mintB, unclaimedFee, positionValue, ipfs }, indx) => (
