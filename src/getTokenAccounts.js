@@ -1,5 +1,5 @@
 import { Connection, PublicKey } from "@solana/web3.js";
-import { SOL_WALLET_ADDRESS, SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config.js";
+import { SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "./config.js";
 
 /**
  * Fetches token accounts
@@ -8,7 +8,7 @@ import { SOL_WALLET_ADDRESS, SOLANA_RPC_ENDPOINT, TOKEN_2022_PROGRAM_ID } from "
  */
 export async function getTokenAccounts() {
   const connection = new Connection(SOLANA_RPC_ENDPOINT, "confirmed");
-  const owner = new PublicKey(SOL_WALLET_ADDRESS);
+  const owner = new PublicKey(process.env.SOL_WALLET_ADDRESS);
   const { value } = await connection.getParsedTokenAccountsByOwner(owner, {
     programId: new PublicKey(TOKEN_2022_PROGRAM_ID),
   });
